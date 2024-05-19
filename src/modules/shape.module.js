@@ -2,6 +2,24 @@ import { Module } from "../core/module";
 
 export class ShapeModule extends Module {
   trigger() {
+    if (this.isExist) {
+      const item = document.querySelector("div");
+      item.remove();
+      this.createElement();
+    } else {
+      this.createElement();
+    }
+  }
+
+  get isExist() {
+    if (document.querySelector("div")) {
+      return true;
+    } else {
+      return false;
+    }
+  }
+
+  createElement() {
     const figure = document.createElement("div");
 
     const randomColor = Math.floor(Math.random() * 16777215 + 100).toString(16);
